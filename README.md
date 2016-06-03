@@ -44,4 +44,5 @@ $target = $hash->loopup('RUNNERLEER');
 
 ## 参考
 [https://github.com/pda/flexihash](https://github.com/pda/flexihash)
+
 [http://blog.codinglabs.org/articles/consistent-hashing.html](http://blog.codinglabs.org/articles/consistent-hashing.html)
