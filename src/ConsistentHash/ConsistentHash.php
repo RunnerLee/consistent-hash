@@ -6,7 +6,7 @@
  */
 namespace Runner\ConsistentHash;
 
-use Runner\ConsistentHash\Hasher\HasherInterface;
+use Runner\ConsistentHash\HashAlgorithm\HashAlgorithmInterface;
 
 /**
  * Class ConsistentHash
@@ -18,7 +18,7 @@ class ConsistentHash
     /**
      * @var
      */
-    protected $hasher;
+    protected $hashAlgorithm;
 
     /**
      * @var array
@@ -39,11 +39,11 @@ class ConsistentHash
     /**
      * ConsistentHash constructor.
      * @param array $nodes
-     * @param HasherInterface $hasherInterface
+     * @param HashAlgorithmInterface $hashAlgorithmInterface
      */
-    public function __construct(array $nodes, HasherInterface $hasherInterface)
+    public function __construct(array $nodes, HashAlgorithmInterface $hashAlgorithmInterface)
     {
-        $this->hasher = $hasherInterface;
+        $this->hashAlgorithm = $hashAlgorithmInterface;
 
         $this->buildNodesMap($nodes);
     }
@@ -55,23 +55,15 @@ class ConsistentHash
      */
     public function lookup($key)
     {
-        $hash = $this->hasher->hash($key);
+        $hash = $this->hashAlgorithm->hash($key);
 
-        if(isset($this->virtualNodes[$hash])) {
-            return $this->virtualNodesMap[$this->virtualNodes[$hash]];
-        }
-        if($hash <= $this->virtualNodes[0]) {
-            return $this->virtualNodesMap[$this->virtualNodes[0]];
-        }
-        if($hash > $this->virtualNodes[$this->virtualNodeTotal - 1]) {
-            return $this->virtualNodesMap[$this->virtualNodes[0]];
-        }
-
-        for($i = 0; $i < $this->virtualNodeTotal; ++$i) {
-            if($hash > $this->virtualNodes[$i] && $hash < $this->virtualNodes[$i + 1]) {
+        for($i = 0; $i < ($this->virtualNodeTotal - 1); ++$i) {
+            if($hash > $this->virtualNodes[$i] && $hash <= $this->virtualNodes[$i + 1]) {
                 return $this->virtualNodesMap[$this->virtualNodes[$i + 1]];
             }
         }
+
+        return $this->virtualNodesMap[$this->virtualNodes[0]];
     }
 
 
@@ -85,12 +77,10 @@ class ConsistentHash
             if(!isset($v['weight'])) {
                 $v['weight'] = 1;
             }
-
             for($i = 1; $i <= $v['weight']; ++$i) {
-                $this->virtualNodesMap[$this->hasher->hash($v['node'] . $i)] = $v['node'];
+                $this->virtualNodesMap[$this->hashAlgorithm->hash($v['node'] . $i)] = $v['node'];
             }
         }
-
         $this->virtualNodeTotal = count($this->virtualNodesMap);
         $this->virtualNodes = array_keys($this->virtualNodesMap);
         sort($this->virtualNodes);

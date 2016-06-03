@@ -4,13 +4,13 @@
  * @email: runnerleer@gmail.com
  * @time: 16-6-3 下午5:54
  */
-namespace Runner\ConsistentHash\Hasher;
+namespace Runner\ConsistentHash\HashAlgorithm;
 
 /**
  * Class Crc32Hasher
- * @package Runner\ConsistentHash\Hasher
+ * @package Runner\ConsistentHash\HashAlgorithm
  */
-class Crc32Hasher implements HasherInterface
+class Crc32Algorithm implements HashAlgorithmInterface
 {
 
     /**

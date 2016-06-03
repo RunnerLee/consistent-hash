@@ -4,13 +4,13 @@
  * @email: runnerleer@gmail.com
  * @time: 16-6-3 下午4:56
  */
-namespace Runner\ConsistentHash\Hasher;
+namespace Runner\ConsistentHash\HashAlgorithm;
 
 /**
  * Interface HasherInterface
- * @package Runner\ConsistentHash\Hasher
+ * @package Runner\ConsistentHash\HashAlgorithm
  */
-interface HasherInterface
+interface HashAlgorithmInterface
 {
 
     /**
