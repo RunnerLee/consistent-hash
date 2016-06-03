@@ -41,3 +41,7 @@ $target = $hash->loopup('RUNNERLEER');
 
 ## TODO
 还不知道这个权重的实现方法靠不靠谱
+
+## 参考
+(https://github.com/pda/flexihash)[https://github.com/pda/flexihash]
+(http://blog.codinglabs.org/articles/consistent-hashing.html)[http://blog.codinglabs.org/articles/consistent-hashing.html]
