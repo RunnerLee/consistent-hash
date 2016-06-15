@@ -78,7 +78,7 @@ class ConsistentHash
                 $v['weight'] = 1;
             }
             for($i = 1; $i <= $v['weight']; ++$i) {
-                $this->virtualNodesMap[$this->hashAlgorithm->hash($v['node'] . $i)] = $v['node'];
+                $this->virtualNodesMap[$this->hashAlgorithm->hash($v['node'] . $i)] = $v['name'];
             }
         }
         $this->virtualNodeTotal = count($this->virtualNodesMap);

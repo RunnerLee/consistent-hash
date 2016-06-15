@@ -9,18 +9,24 @@ require __DIR__ . '/../vendor/autoload.php';
 $hash = new \Runner\ConsistentHash\ConsistentHash([
     [
         'node' => 'node_1',
+        'name' => 'table_1',
     ],
     [
         'node' => 'node_2',
+        'name' => 'table_2',
+        'weight' => 3,
     ],
     [
         'node' => 'node_3',
+        'name' => 'table_3',
     ],
     [
         'node' => 'node_4',
+        'name' => 'table_4',
     ],
     [
         'node' => 'node_5',
+        'name' => 'table_5',
     ],
 ], new \Runner\ConsistentHash\HashAlgorithm\Crc32Algorithm());
 
