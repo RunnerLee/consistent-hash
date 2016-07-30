@@ -10,6 +10,7 @@
 总得来说，对这个东西还是一知半解，玩玩看哈。
 
 ## 使用
+
 ```
 use Runner\ConsistentHash\ConsistentHash;
 
