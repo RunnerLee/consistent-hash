@@ -16,7 +16,7 @@ class ConsistentHash
 {
 
     /**
-     * @var
+     * @var HashAlgorithmInterface
      */
     protected $hashAlgorithm;
 
@@ -50,7 +50,7 @@ class ConsistentHash
 
 
     /**
-     * @param $key
+     * @param string $key
      * @return string
      */
     public function lookup($key)
@@ -78,7 +78,7 @@ class ConsistentHash
                 $v['weight'] = 1;
             }
             for($i = 1; $i <= $v['weight']; ++$i) {
-                $this->virtualNodesMap[$this->hashAlgorithm->hash($v['node'] . $i)] = $v['name'];
+                $this->virtualNodesMap[$this->hashAlgorithm->hash($v['node'] . $i)] = $v['node'];
             }
         }
         $this->virtualNodeTotal = count($this->virtualNodesMap);
