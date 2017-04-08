@@ -4,27 +4,27 @@
  * @email: runnerleer@gmail.com
  * @time: 16-6-3 下午5:50
  */
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__.'/../vendor/autoload.php';
 
 $hash = new \Runner\ConsistentHash\ConsistentHash([
     [
-        'node' => 'node_1',
+        'node'   => 'node_1',
         'weight' => 1,
     ],
     [
-        'node' => 'node_2',
+        'node'   => 'node_2',
         'weight' => 3,
     ],
     [
-        'node' => 'node_3',
+        'node'   => 'node_3',
         'weight' => 1,
     ],
     [
-        'node' => 'node_4',
+        'node'   => 'node_4',
         'weight' => 1,
     ],
     [
-        'node' => 'node_5',
+        'node'   => 'node_5',
         'weight' => 1,
     ],
 ], new \Runner\ConsistentHash\HashAlgorithm\Crc32Algorithm());
