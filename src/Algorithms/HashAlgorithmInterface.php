@@ -5,7 +5,7 @@
  * @time: 16-6-3 下午4:56
  */
 
-namespace Runner\ConsistentHash\HashAlgorithm;
+namespace Runner\ConsistentHash\Algorithms;
 
 /**
  * Interface HasherInterface.

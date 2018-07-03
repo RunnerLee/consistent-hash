@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Runner\\": "src/"
+            "Runner\\ConsistentHash\\": "src/"
         }
     }
 }

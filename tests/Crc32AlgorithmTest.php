@@ -7,7 +7,7 @@
 
 namespace Runner\ConsistentHash\Tests;
 
-use Runner\ConsistentHash\HashAlgorithm\Crc32Algorithm;
+use Runner\ConsistentHash\Algorithms\Crc32Algorithm;
 
 class Crc32AlgorithmTest extends \PHPUnit_Framework_TestCase
 {

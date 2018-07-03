@@ -11,32 +11,37 @@
 
 ## 使用
 
-```
+```php
+<?php
+
 use Runner\ConsistentHash\ConsistentHash;
 
-$hash = new ConsistentHash([
-        [
-            'node' => 'node_1',
-        ],
-        [
-            'node' => 'node_2',
-            'weight' => 2,
-        ],
-        [
-            'node' => 'node_3',
-            'weight' => 3,
-        ],
-        [
-            'node' => 'node_4',
-            'weight' => 4,
-        ],
-        [
-            'node' => 'node_5',
-            'weight' => 5,
-        ],
-], new \Runner\ConsistentHash\HashAlgorithm\Crc32Algorithm());
+$hash = new ConsistentHash(
+    [
+            [
+                'node' => 'node_1',
+            ],
+            [
+                'node' => 'node_2',
+                'weight' => 2,
+            ],
+            [
+                'node' => 'node_3',
+                'weight' => 3,
+            ],
+            [
+                'node' => 'node_4',
+                'weight' => 4,
+            ],
+            [
+                'node' => 'node_5',
+                'weight' => 5,
+            ],
+    ],
+    'md5'
+);
 
-$target = $hash->loopup('RUNNERLEER');
+$node = $hash->lookup('RUNNERLEER');
 
 ```
 

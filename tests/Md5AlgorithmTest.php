@@ -7,7 +7,7 @@
 
 namespace Runner\ConsistentHash\Tests;
 
-use Runner\ConsistentHash\HashAlgorithm\Md5Algorithm;
+use Runner\ConsistentHash\Algorithms\Md5Algorithm;
 
 class Md5AlgorithmTest extends \PHPUnit_Framework_TestCase
 {

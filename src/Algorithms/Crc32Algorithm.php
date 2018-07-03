@@ -2,12 +2,15 @@
 /**
  * @author: RunnerLee
  * @email: runnerleer@gmail.com
- * @time: 16-7-30 下午11:01
+ * @time: 16-6-3 下午5:54
  */
 
-namespace Runner\ConsistentHash\HashAlgorithm;
+namespace Runner\ConsistentHash\Algorithms;
 
-class Md5Algorithm implements HashAlgorithmInterface
+/**
+ * Class Crc32Hasher.
+ */
+class Crc32Algorithm implements HashAlgorithmInterface
 {
     /**
      * @param string $string
@@ -16,6 +19,6 @@ class Md5Algorithm implements HashAlgorithmInterface
      */
     public function hash($string)
     {
-        return hexdec(substr(md5($string), 8, 16));
+        return crc32($string);
     }
 }
