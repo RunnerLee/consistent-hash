@@ -8,7 +8,6 @@
 namespace Runner\ConsistentHash\Tests;
 
 use Runner\ConsistentHash\ConsistentHash;
-use Runner\ConsistentHash\Algorithms\Crc32Algorithm;
 
 class ConsistentHashTest extends \PHPUnit_Framework_TestCase
 {
