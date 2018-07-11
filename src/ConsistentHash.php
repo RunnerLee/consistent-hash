@@ -7,10 +7,7 @@
 
 namespace Runner\ConsistentHash;
 
-use InvalidArgumentException;
-use Runner\ConsistentHash\Algorithms\Crc32Algorithm;
 use Runner\ConsistentHash\Algorithms\HashAlgorithmInterface;
-use Runner\ConsistentHash\Algorithms\Md5Algorithm;
 
 /**
  * Class ConsistentHash.
@@ -58,7 +55,7 @@ class ConsistentHash
     {
         $hash = $this->algorithm->hash($key);
 
-        for ($i = 0; $i < ($this->nodesCount - 1); ++$i) {
+        for ($i = 0; $i < ($this->nodesCount - 1); $i++) {
             if ($hash > $this->nodes[$i] && $hash <= $this->nodes[$i + 1]) {
                 return $this->resourceNodes[$this->nodes[$i + 1]];
             }
@@ -78,7 +75,7 @@ class ConsistentHash
             if (!isset($v['weight'])) {
                 $v['weight'] = 1;
             }
-            for ($i = 1; $i <= $v['weight']; ++$i) {
+            for ($i = 1; $i <= $v['weight']; $i++) {
                 $this->resourceNodes[$this->algorithm->hash($v['node'].$i)] = $v;
             }
         }
