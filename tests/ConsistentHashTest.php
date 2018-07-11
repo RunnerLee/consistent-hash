@@ -37,7 +37,7 @@ class ConsistentHashTest extends \PHPUnit_Framework_TestCase
                     'weight' => 1,
                 ],
             ],
-            'crc32'
+            new Crc32Algorithm()
         );
 
         $node = $hash->lookup('123');
