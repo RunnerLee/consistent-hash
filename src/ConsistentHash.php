@@ -39,13 +39,12 @@ class ConsistentHash
 
     /**
      * ConsistentHash constructor.
-     *
-     * @param array  $nodes
-     * @param string $algorithm
+     * @param array $nodes
+     * @param HashAlgorithmInterface $algorithm
      */
-    public function __construct(array $nodes, $algorithm)
+    public function __construct(array $nodes, HashAlgorithmInterface $algorithm)
     {
-        $this->algorithm = $this->getAlgorithm($algorithm);
+        $this->algorithm = $algorithm;
 
         $this->formatNodes($nodes);
     }
@@ -88,21 +87,5 @@ class ConsistentHash
         sort($this->nodes);
 
         return $this;
-    }
-
-    /**
-     * @param $algorithm
-     *
-     * @return HashAlgorithmInterface
-     */
-    protected function getAlgorithm($algorithm)
-    {
-        switch ($algorithm) {
-            case 'md5':
-                return new Md5Algorithm();
-            case 'crc32':
-                return new Crc32Algorithm();
-        }
-        throw new InvalidArgumentException('algorithm not supported');
     }
 }
